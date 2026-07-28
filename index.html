@@ -1457,4 +1457,37 @@ Yönelik Hibrit Bir Risk Önceliklendirmesi</h1>
         }
     });
 </script>
+<!-- EmailJS Kütüphanesi -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      // EmailJS hesabınızdaki Public Key
+      // (EmailJS -> Account -> API Keys sayfasındaki "Public Key" değerinizi buraya girin)
+      emailjs.init("PUBLIC_KEY_BURAYA_YAZIN");
+   })();
+</script>
+
+<!-- Form Gönderim Kodu -->
+<script>
+  document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Sayfanın yenilenmesini engeller
+
+      const serviceID = '1942';
+      const templateID = 'template_m5w6o8e';
+
+      // Kullanıcıya bilgi verelim
+      const submitBtn = event.target.querySelector('button[type="submit"]') || event.target.querySelector('input[type="submit"]');
+      if(submitBtn) submitBtn.value = "Gönderiliyor...";
+
+      emailjs.sendForm(serviceID, templateID, this)
+          .then(function() {
+              alert('Anket yanıtlarınız başarıyla iletildi. Teşekkür ederiz!');
+              event.target.reset(); // Formu sıfırlar
+              if(submitBtn) submitBtn.value = "Gönder";
+          }, function(error) {
+              alert('Bir hata oluştu, lütfen tekrar deneyin: ' + JSON.stringify(error));
+              if(submitBtn) submitBtn.value = "Gönder";
+          });
+  });
+</script>
 </body>
