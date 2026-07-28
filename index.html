@@ -1490,4 +1490,82 @@ Yönelik Hibrit Bir Risk Önceliklendirmesi</h1>
           });
   });
 </script>
+            <style>
+                /* ==========================================
+   MOBİL UYUM VE TAŞMA ENGELLEME PAKETİ
+   ========================================== */
+
+/* 1. Kutuların dışa taşmasını ve ekranın yatayda kaymasını engeller */
+*, *::before, *::after {
+    box-sizing: border-box !important;
+}
+
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Ana kapların ve form alanlarının mobilde esnemesini sağlar */
+.container, form, .main-content, .wrapper, fieldset {
+    width: 100% !important;
+    max-width: 700px !important; /* Masaüstünde ideal genişlik */
+    margin: 0 auto !important;   /* Ekranı ortalar */
+    padding: 15px !important;
+}
+
+/* 3. Tüm girdi kutularını, seçim menülerini ve butonları ekrana sığdırır */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea,
+button {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 16px !important; /* iOS tarayıcılarda gereksiz yakınlaşmayı engeller */
+    box-sizing: border-box !important;
+}
+
+/* 4. Tablo veya AHP/Likert ölçeği varsa mobilde kaydırılabilir yapar */
+table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+}
+
+/* 5. Sadece mobil ekranlarda çalışan özel düzeltmeler (600px ve altı) */
+@media screen and (max-width: 600px) {
+    body {
+        padding: 8px !important;
+        font-size: 14px !important;
+    }
+
+    /* Başlıkların ekrandan taşmasını ve kelimelerin bölünmeden kaymasını önler */
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.2rem !important;
+        word-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+
+    /* Yan yana durmaya çalışan sütun veya flex yapılarını alt alta dizer */
+    .row, .form-group, .flex-container, .grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Sabit sol/sağ boşlukları sıfırlar */
+    div, section, article {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+                </style>
 </body>
