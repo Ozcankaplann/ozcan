@@ -1491,58 +1491,80 @@ Yönelik Hibrit Bir Risk Önceliklendirmesi</h1>
   });
 </script>
 <style>
-  /* Masaüstü ve Genel Düzen Ayarları */
+  /* AHP Satırı için Genel Esnek Yapı */
   .ahp-row {
-    box-sizing: border-box;
-    width: 100%;
-    margin-bottom: 20px;
+    display: flex !important;
+    flex-direction: row !important; /* Yan yana dizilimi korur */
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 15px;
+    gap: 8px; /* Elemanlar arası güvenli boşluk */
   }
 
-  /* MOBİL DÜZELTMESİ: Ekran genişliği 768px ve altındayken çalışır */
-  @media screen and (max-width: 768px) {
+  /* Sol ve Sağ Kriter Metinleri */
+  .kriter-a, .kriter-b {
+    flex: 1 1 25% !important; /* Sol ve sağ metinlere eşit ve esnek genişlik verir */
+    min-width: 0 !important;   /* Metnin dışa taşmasını engeller */
+    font-size: 13px !important;
+    line-height: 1.2;
+    word-wrap: break-word !important; /* Uzun kelimeleri alt satıra kırar */
+    overflow-wrap: break-word !important;
+  }
+
+  .kriter-a {
+    text-align: left !important;
+  }
+
+  .kriter-b {
+    text-align: right !important;
+  }
+
+  /* Ortadaki 1-9 Buton Kümesi */
+  .scale-options {
+    flex: 2 1 50% !important; /* Ortadaki alana daha fazla alan tanır */
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Tekil Radio Buton Kutuları */
+  .scale-option {
+    display: flex !important;
+    flex-direction: column !important; /* Radio dairesi ve rakamı alt alta tutar */
+    align-items: center !important;
+    margin: 0 1px !important;
+    font-size: 11px !important;
+    cursor: pointer;
+  }
+
+  .scale-option input {
+    margin: 0 0 2px 0 !important;
+    width: auto !important;
+  }
+
+  /* MOBİL EKRANLAR İÇİN HASSAS AYARLAR (Ekran 600px ve altındayken) */
+  @media screen and (max-width: 600px) {
     .ahp-row {
-      display: flex !important;
-      flex-direction: column !important; /* Kriterleri ve ölçeği alt alta dizer */
-      align-items: center !important;
-      background: #f9f9f9;                /* Soruları birbirinden ayırmak için hafif arka plan */
-      padding: 12px !important;
-      border-radius: 8px;
-      border: 1px solid #eee;
+      gap: 4px;
+      padding: 8px 4px;
     }
 
-    /* Sol ve Sağ Kriter Metinleri Mobilde Üstte/Altta Şık Dursun */
     .kriter-a, .kriter-b {
-      width: 100% !important;
-      text-align: center !important;     /* Mobilde metinleri ortalar */
-      font-weight: 600;
-      margin: 6px 0 !important;
-      font-size: 14px;
-      word-wrap: break-word;             /* Metnin taşmasını engeller */
+      font-size: 11px !important; /* Mobilde metinleri sığdırmak için ufak küçültme */
+      flex: 1 1 28% !important;
     }
 
-    /* 1-9 Arası Radio Buton Seçenekleri Grubu */
     .scale-options {
-      display: flex !important;
-      flex-wrap: nowrap !important;       /* Butonların aynı hizada kalmasını sağlar */
-      justify-content: space-between !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      overflow-x: auto !important;        /* Çok dar ekranlarda butonların taşmasını önler */
-      padding: 8px 0 !important;
-      margin: 8px 0 !important;
+      flex: 1 1 44% !important;
     }
 
-    /* Tekil Radio Buton Kutuları */
     .scale-option {
-      display: flex !important;
-      flex-direction: column !important;  /* Radio dairesini ve rakamı alt alta getirir */
-      align-items: center !important;
-      margin: 0 2px !important;
-      font-size: 12px;
-    }
-
-    .scale-option input {
-      margin-bottom: 3px;
+      font-size: 10px !important;
     }
   }
 </style>
