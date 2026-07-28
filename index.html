@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Gemilerin Demirleme Operasyonlarında Hata Temelli Risk Oluşumu: Demir Taramasına
+Yönelik Hibrit Bir Risk Önceliklendirmesi"</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        h1 { text-align: center; border-bottom: 3px solid var(--secondary-color); padding-bottom: 15px; }
+        .info-text { font-size: 14px; text-align: justify; color: #475569; }
+        
+        /* Form Elemanları */
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; }
+        input[type="text"], input[type="number"], select {
+            width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;
+        }
+        .radio-group { display: flex; gap: 20px; margin-top: 5px; }
+
+        /* AHP İkili Karşılaştırma Matrisi Tasarımı */
+        .ahp-row {
+            display: grid;
+            grid-template-columns: 2.5fr 7fr 2.5fr;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        .kriter-a { text-align: right; font-weight: 600; color: #0f172a; }
+        .kriter-b { text-align: left; font-weight: 600; color: #0f172a; }
+        .scale-options {
+            display: flex; justify-content: space-between; align-items: center; position: relative;
+        }
+        .scale-option {
+            display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1;
+        }
+        .scale-option input { margin-bottom: 5px; cursor: pointer; }
+        .scale-option span { font-size: 11px; font-weight: bold; color: #64748b; }
+        
+        /* Başlık Etiketleri (Aşırı, Çok Güçlü vs.) */
+        .scale-header {
+            display: grid; grid-template-columns: 2.5fr 7fr 2.5fr;
+            font-size: 12px; font-weight: bold; text-align: center; color: var(--primary-color);
+            margin-bottom: 5px; padding: 0 15px;
+        }
+
+        /* Buton */
+        .btn-submit {
+            background-color: var(--primary-color); color: white; border: none; padding: 15px 30px;
+            font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover { background-color: #172554; }
+        
+        /* Tablo Tasarımları */
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+        th, td { border: 1px solid #cbd5e1; padding: 10px; text-align: left; }
+        th { background-color: #e2e8f0; color: var(--primary-color); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    
+    <!-- 1. GİRİŞ VE BİLGİLENDİRME -->
+    <div class="card">
+        <!-- LOGO BÖLÜMÜ -->
+    <div style="text-align: center; margin-bottom: 15px;">
+        <img src="kou.pg.png" alt="Üniversite / Kurum Logosu" style="max-height: 90px; width: auto;">
+    </div>
+        <h1>Gemilerin Demirleme Operasyonlarında Hata Temelli Risk Oluşumu: Demir Taramasına
+Yönelik Hibrit Bir Risk Önceliklendirmesi</h1>
+        <p class="info-text">
+            <strong>Sayın Katılımcı,</strong><br>
+            Bu anket formu, KOÜ Fen Bilimleri Enstitüsü Deniz Ulaştırma Mühendisliği ABD Yüksek Lisans Öğrencisi Özcan KAPLAN tarafından ve Doç. Dr. Murat YORULMAZ danışmanlığında yazılan yüksek lisans tezinin, demirleme operasyonlarında oluşan risklerin analizi için gerekli olan verilerin elde edilmesi amacıyla gerçekleştirilmektedir. Bu amaçla 7 ana kriter ve 21 alt kriterin önem dereceleri belirlenecektir. Araştırma tamamen akademik amaçlarla ve gönüllülük esasına göre gerçekleştirilmektedir. Kişisel ve şirket bilgileriniz gizli tutulacaktır.<br><br>
+            <strong>Araştırma Sorumlusu:</strong> Özcan KAPLAN (kaplan.ozcann@gmail.com)
+        </p>
+    </div>
+
+    <!-- PDF İNDİRME BİLGİ KUTUSU -->
+<div style="border-left: 4px solid #e2e8f0; border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 15px; margin-bottom: 25px; border-radius: 0 8px 8px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 15px;">
+    <div style="flex: 1; min-width: 200px;">
+        <strong style="color: #1e40af; font-size: 15px; display: block; margin-bottom: 3px;">Anket Doldurma Kılavuzu</strong>
+        <p style="margin: 0; font-size: 13px; color: #334155; line-height: 1.4;">
+            ⚠️ Ankete başlamadan önce lütfen kılavuzu indirip okuyunuz. Kılavuz, anketin doğru ve eksiksiz doldurulabilmesi için gerekli bilgileri içermektedir.
+        </p>
+    </div>
+    <a href="https://disk.yandex.com.tr/d/6bdNdyvh4ScImw" target="_blank" style="background-color: #1d4ed8; color: white; padding: 10px 18px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 13px; white-space: nowrap; flex-shrink: 0;">
+        Kılavuzu İndir
+    </a>
+</div>
+
+    <form id="ahpForm">
+
+        <!-- 2. KİŞİSEL BİLGİLER -->
+        <div class="card">
+            <h2>Kişisel Bilgiler</h2>
+            <div class="form-group">
+                <label>Cinsiyetiniz</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="cinsiyet" value= "♀ Kadın" required> Kadın</label>
+                    <label><input type="radio" name="cinsiyet" value="♂ Erkek"> Erkek</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="yas">Yaşınız</label>
+                <input type="number" id="yas" name="yas" required min="18" max="80">
+            </div>
+            <div class="form-group">
+                <label for="sure">Denizdeki Çalışma Süreniz (Yıl)</label>
+                <input type="number" id="sure" name="sure" required min="0" max="60">
+            </div>
+            <div class="form-group">
+                <label for="egitim">Eğitim Durumunuz</label>
+                <select id="egitim" name="egitim" required>
+                    <option value="">Seçiniz...</option>
+                    <option value="Ön Lisans">Ön Lisans</option>
+                    <option value="Lisans">Lisans</option>
+                    <option value="Yüksek Lisans">Yüksek Lisans</option>
+                    <option value="Doktora">Doktora</option>
+                </select>
+            </div>
+        </div>
+
+<!-- 3. ÖLÇEK BİLGİLENDİRMESİ -->
+<div class="card" style="padding: 12px 25px; margin-bottom: 12px;">
+    <h2 style="margin-top: 0; margin-bottom: 6px; font-size: 18px;">Değerlendirme Ölçeği</h2>
+    <p class="info-text" style="margin-top: 0; margin-bottom: 8px; font-size: 13px;">
+        Sol ve sağ taraftaki kriterleri kıyaslarken, hangi taraf üstünse o yöndeki dereceyi seçiniz.
+    </p>
+    <table style="margin: 0; font-size: 13px;">
+        <thead>
+            <tr>
+                <th style="padding: 4px 8px; text-align: center; width: 80px;">Derece</th>
+                <th style="padding: 4px 8px;">Açıklama</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td style="padding: 4px 8px; text-align: center; font-weight: bold;">1</td><td style="padding: 4px 8px;">Eşit derecede önemli</td></tr>
+            <tr><td style="padding: 4px 8px; text-align: center; font-weight: bold;">3</td><td style="padding: 4px 8px;">Orta derecede önemli</td></tr>
+            <tr><td style="padding: 4px 8px; text-align: center; font-weight: bold;">5</td><td style="padding: 4px 8px;">Güçlü derecede önemli</td></tr>
+            <tr><td style="padding: 4px 8px; text-align: center; font-weight: bold;">7</td><td style="padding: 4px 8px;">Çok güçlü derecede önemli</td></tr>
+            <tr><td style="padding: 4px 8px; text-align: center; font-weight: bold;">9</td><td style="padding: 4px 8px;">Aşırı derecede önemli</td></tr>
+        </tbody>
+    </table>
+</div>
+
+        <!-- 4. ANA KRİTERLER AHP SORULARI -->
+        <div class="card">
+            <h2>Ana Kriterler İçin İkili Karşılaştırma Soruları</h2>
+            <p class="info-text">Lütfen kriterler arasındaki önem derecesini işaretleyiniz.</p>
+            
+            <!-- Ölçek Açıklama Başlıkları -->
+            <div class="scale-header">
+                <div>A Kriteri</div>
+                <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                    <span>Aşırı</span><span>Ç.Güçlü</span><span>Güçlü</span><span>Orta</span><span>Eşit</span><span>Orta</span><span>Güçlü</span><span>Ç.Güçlü</span><span>Aşırı</span>
+                </div>
+                <div>B Kriteri</div>
+            </div>
+
+            <!-- Soru 1 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Çevresel kuvvetlerin yanlış yönetilmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q1" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q1" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q1" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q1" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q1" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q1" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q1" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q1" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q1" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Demirleme alanının uygun olmaması</div>
+            </div>
+
+            <!-- Soru 2 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Çevresel kuvvetlerin yanlış yönetilmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q2" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q2" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q2" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q2" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q2" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q2" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q2" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q2" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q2" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Demirleme uygulamasındaki operasyonel hatalar</div>
+            </div>
+            <!-- Soru 3 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Çevresel kuvvetlerin yanlış yönetilmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q3" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q3" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q3" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q3" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q3" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q3" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q3" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q3" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q3" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Demirleme donanımına ilişkin teknik yetersizlikler</div>
+            </div>
+
+              <!-- Soru 4 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Çevresel kuvvetlerin yanlış yönetilmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q4" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q4" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q4" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q4" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q4" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q4" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q4" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q4" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q4" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Gemi kondisyonundan kaynaklanan dengesizlikler</div>
+            </div>
+
+             <!-- Soru 5 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Çevresel kuvvetlerin yanlış yönetilmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q5" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q5" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q5" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q5" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q5" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q5" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q5" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q5" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q5" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Pozisyon belirleme ve takip eksiklikleri</div>
+            </div>
+
+             <!-- Soru 6 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Çevresel kuvvetlerin yanlış yönetilmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q6" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q6" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q6" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q6" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q6" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q6" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q6" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q6" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q6" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Organizasyonel ve prosedürel yetersizlikler</div>
+            </div>
+
+             <!-- Soru 7 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme alanının uygun olmaması</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q7" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q7" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q7" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q7" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q7" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q7" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q7" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q7" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q7" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Demirleme Uygulamasındaki Operasyonel Hatalar</div>
+            </div>
+
+             <!-- Soru 8 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme alanının uygun olmaması</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q8" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q8" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q8" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q8" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q8" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q8" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q8" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q8" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q8" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Demirleme Donanımına İlişkin Teknik Yetersizlikler</div>
+            </div>
+
+             <!-- Soru 9 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme alanının uygun olmaması</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q9" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q9" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q9" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q9" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q9" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q9" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q9" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q9" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q9" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Gemi Kondisyonundan Kaynaklanan Dengesizlikler</div>
+            </div>
+
+             <!-- Soru 10 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme alanının uygun olmaması</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q10" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q10" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q10" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q10" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q10" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q10" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q10" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q10" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q10" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Pozisyon Belirleme ve Takip Eksiklikleri</div>
+            </div>
+
+             <!-- Soru 11 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme alanının uygun olmaması</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q11" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q11" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q11" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q11" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q11" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q11" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q11" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q11" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q11" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Organizasyonel ve Prosedürel Yetersizlikler</div>
+            </div>
+
+             <!-- Soru 12 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme uygulamasındaki operasyonel hatalar</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q12" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q12" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q12" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q12" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q12" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q12" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q12" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q12" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q12" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Demirleme donanımına ilişkin teknik yetersizlikler</div>
+            </div>
+
+             <!-- Soru 13 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme uygulamasındaki operasyonel hatalar</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q13" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q13" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q13" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q13" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q13" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q13" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q13" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q13" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q13" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Gemi kondisyonundan kaynaklanan dengesizlikler</div>
+            </div>
+
+             <!-- Soru 14 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme uygulamasındaki operasyonel hatalar</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q14" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q14" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q14" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q14" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q14" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q14" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q14" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q14" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q14" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Pozisyon belirleme ve takip eksiklikleri</div>
+            </div>
+
+             <!-- Soru 15 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme uygulamasındaki operasyonel hatalar</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q15" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q15" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q15" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q15" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q15" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q15" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q15" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q15" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q15" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Organizasyonel ve prosedürel yetersizlikler</div>
+            </div>
+
+             <!-- Soru 16 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme donanımına ilişkin teknik yetersizlikler</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q16" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q16" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q16" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q16" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q16" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q16" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q16" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q16" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q16" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Gemi kondisyonundan kaynaklanan dengesizlikler</div>
+            </div>
+
+             <!-- Soru 17 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme donanımına ilişkin teknik yetersizlikler</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q17" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q17" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q17" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q17" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q17" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q17" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q17" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q17" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q17" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Pozisyon belirleme ve takip eksiklikleri</div>
+            </div>
+
+             <!-- Soru 18 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirleme donanımına ilişkin teknik yetersizlikler</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q18" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q18" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q18" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q18" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q18" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q18" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q18" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q18" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q18" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Organizasyonel ve prosedürel yetersizlikler</div>
+            </div>
+
+             <!-- Soru 19 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Gemi kondisyonundan kaynaklanan dengesizlikler</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q19" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q19" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q19" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q19" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q19" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q19" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q19" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q19" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q19" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Pozisyon belirleme ve takip eksiklikleri</div>
+            </div>
+
+             <!-- Soru 20 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Gemi kondisyonundan kaynaklanan dengesizlikler</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q20" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q20" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q20" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q20" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q20" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q20" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q20" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q20" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q20" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Organizasyonel ve prosedürel yetersizlikler</div>
+            </div>
+
+             <!-- Soru 21 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Pozisyon belirleme ve takip eksiklikleri</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q21" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q21" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q21" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q21" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q21" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q21" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q21" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q21" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q21" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Organizasyonel ve prosedürel yetersizlikler</div>
+            </div>
+
+            <!-- 4. ARA KRİTERLER AHP SORULARI -->
+        <div class="card">
+<h3 style="color: rgb(93, 139, 238) !important;">1. Ana Kriterin ara kriterleri İçin İkili Karşılaştırma Soruları</h3>
+            
+            <!-- Ölçek Açıklama Başlıkları -->
+            <div class="scale-header">
+                <div>A Kriteri</div>
+                <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                    <span>Aşırı</span><span>Ç.Güçlü</span><span>Güçlü</span><span>Orta</span><span>Eşit</span><span>Orta</span><span>Güçlü</span><span>Ç.Güçlü</span><span>Aşırı</span>
+                </div>
+                <div>B Kriteri</div>
+            </div>
+ <!-- Soru 22 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Akıntı etkisinin göz ardı edilmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q22" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q22" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q22" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q22" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q22" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q22" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q22" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q22" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q22" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Rüzgâr kaynaklı sürüklenme</div>
+            </div>
+            
+            <!-- Soru 23 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Akıntı etkisinin göz ardı edilmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q23" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q23" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q23" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q23" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q23" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q23" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q23" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q23" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q23" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Dalga ve deniz durumu baskısı</div>
+            </div>
+
+            <!-- Soru 24 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Rüzgâr kaynaklı sürüklenme</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q24" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q24" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q24" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q24" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q24" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q24" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q24" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q24" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q24" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Dalga ve deniz durumu baskısı</div>
+            </div>
+
+                 <!-- 4. ARA KRİTERLER AHP SORULARI -->
+        
+            <h3 style="color: rgb(93, 139, 238) !important;"> 2. Ana Kriterin ara kriterleri İçin İkili Karşılaştırma Soruları</h3>
+            
+            <!-- Ölçek Açıklama Başlıkları -->
+            <div class="scale-header">
+                <div>A Kriteri</div>
+                <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                    <span>Aşırı</span><span>Ç.Güçlü</span><span>Güçlü</span><span>Orta</span><span>Eşit</span><span>Orta</span><span>Güçlü</span><span>Ç.Güçlü</span><span>Aşırı</span>
+                </div>
+                <div>B Kriteri</div>
+            </div>
+ <!-- Soru 25 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Tutunma kabiliyeti düşük deniz tabanı</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q25" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q25" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q25" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q25" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q25" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q25" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q25" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q25" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q25" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Açık ve korunmasız demir sahası</div>
+            </div>
+            
+            <!-- Soru 26 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Tutunma kabiliyeti düşük deniz tabanı</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q26" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q26" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q26" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q26" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q26" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q26" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q26" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q26" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q26" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Aşırı derinlik etkisi</div>
+            </div>
+
+            <!-- Soru 27 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Açık ve korunmasız demir sahası</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q27" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q27" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q27" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q27" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q27" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q27" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q27" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q27" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q27" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Aşırı derinlik etkisi</div>
+            </div>
+
+              <!-- 4. ARA KRİTERLER AHP SORULARI -->
+        
+            <h3 style="color: rgb(93, 139, 238) !important;">3. Ana Kriterin ara kriterleri İçin İkili Karşılaştırma Soruları</h3>
+            
+            <!-- Ölçek Açıklama Başlıkları -->
+            <div class="scale-header">
+                <div>A Kriteri</div>
+                <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                    <span>Aşırı</span><span>Ç.Güçlü</span><span>Güçlü</span><span>Orta</span><span>Eşit</span><span>Orta</span><span>Güçlü</span><span>Ç.Güçlü</span><span>Aşırı</span>
+                </div>
+                <div>B Kriteri</div>
+            </div>
+ <!-- Soru 28 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Yetersiz kaloma</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q28" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q28" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q28" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q28" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q28" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q28" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q28" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q28" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q28" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Demirin yanlış zamanda kullanılması</div>
+            </div>
+            
+            <!-- Soru 29 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Yetersiz kaloma</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q29" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q29" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q29" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q29" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q29" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q29" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q29" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q29" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q29" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Demirleme düzeninin yanlış seçilmesi</div>
+            </div>
+
+            <!-- Soru 30 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demirin yanlış zamanda kullanılması</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q30" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q30" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q30" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q30" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q30" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q30" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q30" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q30" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q30" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Demirleme düzeninin yanlış seçilmesi</div>
+            </div>
+
+              <!-- 4. ARA KRİTERLER AHP SORULARI -->
+        
+            <h3 style="color: rgb(93, 139, 238) !important;">4. Ana Kriterin ara kriterleri İçin İkili Karşılaştırma Soruları</h3>
+            
+            <!-- Ölçek Açıklama Başlıkları -->
+            <div class="scale-header">
+                <div>A Kriteri</div>
+                <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                    <span>Aşırı</span><span>Ç.Güçlü</span><span>Güçlü</span><span>Orta</span><span>Eşit</span><span>Orta</span><span>Güçlü</span><span>Ç.Güçlü</span><span>Aşırı</span>
+                </div>
+                <div>B Kriteri</div>
+            </div>
+ <!-- Soru 31 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demir veya tırnak geometrisi sorunları</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q31" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q31" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q31" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q31" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q31" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q31" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q31" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q31" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q31" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Donanım–Gemi uyumsuzluğu</div>
+            </div>
+            
+            <!-- Soru 32 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demir veya tırnak geometrisi sorunları</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q32" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q32" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q32" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q32" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q32" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q32" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q32" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q32" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q32" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Irgatın yetersiz olması (Performansının düşük olması)</div>
+            </div>
+
+            <!-- Soru 33 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Donanım–Gemi uyumsuzluğu</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q33" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q33" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q33" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q33" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q33" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q33" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q33" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q33" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q33" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Irgatın yetersiz olması (Performansının düşük olması)</div>
+            </div>
+
+              <!-- 4. ARA KRİTERLER AHP SORULARI -->
+        
+            <h3 style="color: rgb(93, 139, 238) !important;">5. Ana Kriterin ara kriterleri İçin İkili Karşılaştırma Soruları</h3>
+            
+            <!-- Ölçek Açıklama Başlıkları -->
+            <div class="scale-header">
+                <div>A Kriteri</div>
+                <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                    <span>Aşırı</span><span>Ç.Güçlü</span><span>Güçlü</span><span>Orta</span><span>Eşit</span><span>Orta</span><span>Güçlü</span><span>Ç.Güçlü</span><span>Aşırı</span>
+                </div>
+                <div>B Kriteri</div>
+            </div>
+ <!-- Soru 34 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Uygunsuz trim durumu</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q34" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q34" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q34" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q34" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q34" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q34" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q34" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q34" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q34" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Yetersiz balastlama</div>
+            </div>
+            
+            <!-- Soru 35 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Uygunsuz trim durumu</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q35" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q35" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q35" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q35" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q35" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q35" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q35" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q35" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q35" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Makine sistemlerinin hazır tutulmaması</div>
+            </div>
+
+            <!-- Soru 36 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Yetersiz balastlama</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q36" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q36" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q36" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q36" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q36" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q36" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q36" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q36" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q36" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Makine sistemlerinin hazır tutulmaması</div>
+            </div>
+
+              <!-- 4. ARA KRİTERLER AHP SORULARI -->
+        
+            <h3 style="color: rgb(93, 139, 238) !important;">6. Ana Kriterin ara kriterleri İçin İkili Karşılaştırma Soruları</h3>
+            
+            <!-- Ölçek Açıklama Başlıkları -->
+            <div class="scale-header">
+                <div>A Kriteri</div>
+                <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                    <span>Aşırı</span><span>Ç.Güçlü</span><span>Güçlü</span><span>Orta</span><span>Eşit</span><span>Orta</span><span>Güçlü</span><span>Ç.Güçlü</span><span>Aşırı</span>
+                </div>
+                <div>B Kriteri</div>
+            </div>
+ <!-- Soru 37 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demir pozisyonunun hatalı belirlenmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q37" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q37" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q37" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q37" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q37" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q37" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q37" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q37" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q37" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Sürekli izleme yapılmaması</div>
+            </div>
+            
+            <!-- Soru 38 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demir pozisyonunun hatalı belirlenmesi</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q38" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q38" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q38" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q38" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q38" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q38" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q38" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q38" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q38" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Elektronik destekten yetersiz yararlanma</div>
+            </div>
+
+            <!-- Soru 39 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Sürekli izleme yapılmaması</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q39" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q39" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q39" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q39" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q39" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q39" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q39" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q39" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q39" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Elektronik destekten yetersiz yararlanma</div>
+            </div>
+
+              <!-- 4. ARA KRİTERLER AHP SORULARI -->
+        
+            <h3 style="color: rgb(93, 139, 238) !important;">7. Ana Kriterin ara kriterleri İçin İkili Karşılaştırma Soruları</h3>
+            
+            <!-- Ölçek Açıklama Başlıkları -->
+            <div class="scale-header">
+                <div>A Kriteri</div>
+                <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                    <span>Aşırı</span><span>Ç.Güçlü</span><span>Güçlü</span><span>Orta</span><span>Eşit</span><span>Orta</span><span>Güçlü</span><span>Ç.Güçlü</span><span>Aşırı</span>
+                </div>
+                <div>B Kriteri</div>
+            </div>
+ <!-- Soru 40 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demir vardiyasına özgü risk değerlendirmesinin yapılmaması</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q40" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q40" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q40" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q40" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q40" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q40" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q40" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q40" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q40" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Talimat ve SMS uygulamalarına uyumsuzluk</div>
+            </div>
+            
+            <!-- Soru 41 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Demir vardiyasına özgü risk değerlendirmesinin yapılmaması</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q41" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q41" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q41" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q41" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q41" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q41" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q41" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q41" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q41" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Yetersiz personel tahsisi</div>
+            </div>
+
+            <!-- Soru 42 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Talimat ve SMS uygulamalarına uyumsuzluk</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q42" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q42" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q42" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q42" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q42" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q42" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q42" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q42" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q42" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Yetersiz personel tahsisi</div>
+            </div>
+
+        <!-- 5. FMEA RİSK DEĞERLENDİRME SORULARI -->
+    <h2>FMEA Risk Analizi Değerlendirmesi</h2>
+    <h3 style="font-size: 16px; font-weight: bold; color: #638dff; margin-top: 10px;">
+        Çevresel Kuvvetlerin Yanlış Yönetilmesi Kriteri İçin İkili Karşılaştırma
+    </h3>
+            <!-- Soru 43 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q43" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q43" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q43" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q43" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q43" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q43" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q43" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q43" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q43" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Ortaya çıkma</div>
+            </div>
+
+            <!-- Soru 44 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q44" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q44" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q44" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q44" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q44" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q44" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q44" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q44" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q44" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+             <!-- Soru 45 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Ortaya çıkma</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q45" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q45" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q45" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q45" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q45" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q45" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q45" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q45" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q45" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+            <h3 style="font-size: 16px; font-weight: bold; color: #638dff; margin-top: 10px;">
+       Demirleme Alanının Uygun Olmaması Kriteri İçin İkili Karşılaştırma
+    </h3>
+
+     <!-- Soru 46 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q46" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q46" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q46" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q46" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q46" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q46" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q46" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q46" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q46" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Ortaya çıkma</div>
+            </div>
+
+            <!-- Soru 47 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q47" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q47" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q47" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q47" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q47" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q47" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q47" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q47" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q47" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+             <!-- Soru 48 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Ortaya çıkma</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q48" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q48" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q48" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q48" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q48" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q48" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q48" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q48" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q48" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+  <h3 style="font-size: 16px; font-weight: bold; color: #638dff; margin-top: 10px;">
+        Demirleme Uygulamasındaki Operasyonel Hatalar Kriteri İçin İkili Karşılaştırma
+    </h3>
+
+     <!-- Soru 49 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q49" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q49" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q49" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q49" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q49" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q49" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q49" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q49" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q49" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Ortaya çıkma</div>
+            </div>
+
+            <!-- Soru 50 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q50" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q50" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q50" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q50" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q50" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q50" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q50" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q50" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q50" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+             <!-- Soru 51 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Ortaya çıkma</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q51" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q51" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q51" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q51" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q51" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q51" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q51" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q51" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q51" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+               <h3 style="font-size: 16px; font-weight: bold; color: #638dff; margin-top: 10px;">
+       Demirleme Donanımına İlişkin Teknik Yetersizlikler Kriteri İçin İkili Karşılaştırma
+    </h3>
+
+    
+     <!-- Soru 52 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q52" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q52" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q52" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q52" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q52" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q52" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q52" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q52" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q52" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Ortaya çıkma</div>
+            </div>
+
+            <!-- Soru 53 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q53" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q53" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q53" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q53" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q53" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q53" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q53" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q53" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q53" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+             <!-- Soru 54 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Ortaya çıkma</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q54" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q54" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q54" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q54" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q54" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q54" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q54" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q54" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q54" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+             <h3 style="font-size: 16px; font-weight: bold; color: #638dff; margin-top: 10px;">
+       Gemi Kondisyonundan Kaynaklanan Dengesizlikler Kriteri İçin İkili Karşılaştırma
+    </h3>
+
+    
+     <!-- Soru 55 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q55" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q55" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q55" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q55" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q55" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q55" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q55" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q55" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q55" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Ortaya çıkma</div>
+            </div>
+
+            <!-- Soru 56 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q56" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q56" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q56" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q56" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q56" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q56" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q56" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q56" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q56" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+             <!-- Soru 57 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Ortaya çıkma</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q57" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q57" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q57" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q57" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q57" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q57" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q57" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q57" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q57" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+  <h3 style="font-size: 16px; font-weight: bold; color: #638dff; margin-top: 10px;">
+       Pozisyon Belirleme ve Takip Eksiklikleri Kriteri İçin İkili Karşılaştırma
+    </h3>
+
+    
+     <!-- Soru 58 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q58" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q58" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q58" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q58" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q58" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q58" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q58" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q58" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q58" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Ortaya çıkma</div>
+            </div>
+
+            <!-- Soru 59 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q59" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q59" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q59" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q59" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q59" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q59" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q59" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q59" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q59" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+             <!-- Soru 60 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Ortaya çıkma</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q60" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q60" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q60" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q60" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q60" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q60" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q60" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q60" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q60" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+            <h3 style="font-size: 16px; font-weight: bold; color: #638dff; margin-top: 10px;">
+       Organizasyonel ve Prosedürel Yetersizlikler Kriteri İçin İkili Karşılaştırma
+    </h3>
+
+    
+     <!-- Soru 61 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q61" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q61" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q61" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q61" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q61" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q61" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q61" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q61" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q61" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Ortaya çıkma</div>
+            </div>
+
+            <!-- Soru 62 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Şiddet</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q62" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q62" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q62" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q62" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q62" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q62" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q62" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q62" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q62" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+             <!-- Soru 63 -->
+            <div class="ahp-row">
+                <div class="kriter-a" style="text-align: left;">Ortaya çıkma</div>
+                <div class="scale-options">
+                    <label class="scale-option"><input type="radio" name="q63" value="A9" required><span>9</span></label>
+                    <label class="scale-option"><input type="radio" name="q63" value="A7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q63" value="A5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q63" value="A3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q63" value="1"><span>1</span></label>
+                    <label class="scale-option"><input type="radio" name="q63" value="B3"><span>3</span></label>
+                    <label class="scale-option"><input type="radio" name="q63" value="B5"><span>5</span></label>
+                    <label class="scale-option"><input type="radio" name="q63" value="B7"><span>7</span></label>
+                    <label class="scale-option"><input type="radio" name="q63" value="B9"><span>9</span></label>
+                </div>
+                <div class="kriter-b">Tespit edilebilirlik</div>
+            </div>
+
+      <!-- GÖNDER VE TEŞEKKÜR BÖLÜMÜ -->
+<div class="card" style="padding: 20px 25px; margin-bottom: 20px; text-align: center; background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    
+    <!-- Gönder Butonu Alanı -->
+    <div id="submit-section">
+        <p style="margin-top: 0; margin-bottom: 12px; font-size: 13px; color: #64748b;">
+            Lütfen tüm soruları yanıtladığınızdan emin olduktan sonra anketi tamamlayınız.
+        </p>
+        <button type="submit" id="btn-gonder" style="background-color: #0284c7; color: white; border: none; padding: 12px 35px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s;">
+            Anketi Gönder ve Tamamla 🚀
+        </button>
+    </div>
+
+    <!-- Teşekkür Mesajı (Başlangıçta gizli) -->
+    <div id="thank-you-message" style="display: none; padding: 15px 10px;">
+        <div style="font-size: 45px; margin-bottom: 10px;">⚓</div>
+        <h2 style="color: #0369a1; margin-top: 0; margin-bottom: 8px; font-size: 22px;">
+            Katkılarınız İçin Teşekkür Ederiz!
+        </h2>
+        <p style="color: #334155; font-size: 14px; line-height: 1.5; max-width: 550px; margin: 0 auto 10px auto;">
+            Değerli görüşleriniz ve ayırdığınız zaman için çok teşekkür ederiz. Vermiş olduğunuz yanıtlar akademik çalışmamızın ve risk analizi değerlendirmelerinin güvenilirliği için büyük önem taşımaktadır.
+        </p>
+        <span style="display: inline-block; background-color: #e0f2fe; color: #0369a1; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+            Anket yanıtlarınız başarıyla kaydedilmiştir.
+        </span>
+    </div>
+
+</div>
+
+<!-- OTOMATİK VERİ KAYDETME KODU -->
+<script>
+    // Güncel Google Apps Script Web App URL'iniz
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzgCGVHt19OylHb4CpnTX4s9Q8lUxxnAdTjF-UTUltnUNph3l238AaneSlGpfSNBT3jMw/exec";
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('ahpForm') || document.querySelector('form');
+        
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Sayfanın yenilenmesini ve eski submit davranışını engeller
+
+                const btnGonder = document.getElementById('btn-gonder') || form.querySelector('button[type="submit"]');
+                if (btnGonder) {
+                    btnGonder.innerText = "Gönderiliyor, lütfen bekleyiniz...";
+                    btnGonder.disabled = true;
+                }
+
+                const formData = new FormData(form);
+
+                // no-cors modu yerel dosyalardan (file://) Google Apps Script'e veri yazılmasını sağlar
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                })
+                .then(() => {
+                    // Veri Google Sheets'e başarıyla ulaştı, teşekkür mesajını göster
+                    const submitSection = document.getElementById('submit-section');
+                    if (submitSection) submitSection.style.display = 'none';
+
+                    const thankYouMessage = document.getElementById('thank-you-message');
+                    if (thankYouMessage) {
+                        thankYouMessage.style.display = 'block';
+                        thankYouMessage.scrollIntoView({ behavior: 'smooth' });
+                    }
+                })
+                .catch(error => {
+                    console.error("Gönderim hatası:", error);
+                    // Hata durumunda da kullanıcıyı mağdur etmemek için mesajı göster
+                    const submitSection = document.getElementById('submit-section');
+                    if (submitSection) submitSection.style.display = 'none';
+
+                    const thankYouMessage = document.getElementById('thank-you-message');
+                    if (thankYouMessage) thankYouMessage.style.display = 'block';
+                });
+            });
+        }
+    });
+</script>
+</body>
