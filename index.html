@@ -1490,32 +1490,47 @@ Yönelik Hibrit Bir Risk Önceliklendirmesi</h1>
           });
   });
 </script>
-            <style>
-                /* ==========================================
-   MOBİL UYUM VE TAŞMA ENGELLEME PAKETİ
+      <style>
+/* ==========================================
+   MOBİL UYUM VE TAŞMA ENGELLEME (GÜÇLENDİRİLMİŞ)
    ========================================== */
 
-/* 1. Kutuların dışa taşmasını ve ekranın yatayda kaymasını engeller */
+/* 1. Tüm elemanların genişliğini sıfırla ve dışa taşmayı kesin olarak engelle */
 *, *::before, *::after {
     box-sizing: border-box !important;
+    max-width: 100% !important;
 }
 
 html, body {
-    max-width: 100% !important;
+    max-width: 100vw !important;
     overflow-x: hidden !important;
-    margin: 0;
-    padding: 0;
-}
-
-/* 2. Ana kapların ve form alanlarının mobilde esnemesini sağlar */
-.container, form, .main-content, .wrapper, fieldset {
+    margin: 0 !important;
+    padding: 0 !important;
     width: 100% !important;
-    max-width: 700px !important; /* Masaüstünde ideal genişlik */
-    margin: 0 auto !important;   /* Ekranı ortalar */
-    padding: 15px !important;
 }
 
-/* 3. Tüm girdi kutularını, seçim menülerini ve butonları ekrana sığdırır */
+/* 2. Form ve tüm div kaplamalarını ekran genişliğine sığdır */
+body > *, form, div, main, section, article, .container {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* 3. Anket Seçenekleri, Radio Grupları ve Metin Taşmalarını Düzelt */
+p, span, label, td, th, h1, h2, h3, h4, h5, h6 {
+    white-space: normal !important; /* Uzun metinlerin sağa taşmasını engeller, alt satıra geçirir */
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+/* 4. Tablo veya Yan Yana Ölçek Matrislerini Mobilde Sağa-Sola Kaydırılabilir Yap */
+table, .matrix, .likert-scale {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 5. Girdi Kutularını ve Butonları Ekrana Tam Sığdır */
 input[type="text"],
 input[type="email"],
 input[type="number"],
@@ -1523,49 +1538,28 @@ select,
 textarea,
 button {
     width: 100% !important;
-    max-width: 100% !important;
-    font-size: 16px !important; /* iOS tarayıcılarda gereksiz yakınlaşmayı engeller */
-    box-sizing: border-box !important;
+    font-size: 16px !important; /* iOS zoom engelleme */
 }
 
-/* 4. Tablo veya AHP/Likert ölçeği varsa mobilde kaydırılabilir yapar */
-table {
-    display: block !important;
-    width: 100% !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-}
-
-/* 5. Sadece mobil ekranlarda çalışan özel düzeltmeler (600px ve altı) */
+/* 6. MOBİL ÖZEL DÜZELTMELER (600px ve altı) */
 @media screen and (max-width: 600px) {
     body {
-        padding: 8px !important;
-        font-size: 14px !important;
+        padding: 10px !important;
     }
 
-    /* Başlıkların ekrandan taşmasını ve kelimelerin bölünmeden kaymasını önler */
-    h1, h2, h3, h4, h5, h6 {
-        font-size: 1.2rem !important;
-        word-wrap: break-word !important;
-        hyphens: auto !important;
+    /* Sabit sol/sağ girintileri ve padding'leri sıfırla */
+    * {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
-    /* Yan yana durmaya çalışan sütun veya flex yapılarını alt alta dizer */
-    .row, .form-group, .flex-container, .grid {
+    /* Yan yana duran radio buton seçeneklerini veya flex kutularını alt alta al */
+    .options, .answers, .radio-group, .row, .form-group {
         display: flex !important;
         flex-direction: column !important;
-        width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    /* Sabit sol/sağ boşlukları sıfırlar */
-    div, section, article {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
     }
 }
-                </style>
+</style>
 </body>
