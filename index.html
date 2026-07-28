@@ -990,7 +990,7 @@ Yönelik Hibrit Bir Risk Önceliklendirmesi</h1>
             </div>
 
         <!-- 5. FMEA RİSK DEĞERLENDİRME SORULARI -->
-    <h2>FMEA Risk Analizi Değerlendirmesi</h2>
+    <h2>AHP Tabanlı FMEA Analizi Soruları </h2>
     <h3 style="font-size: 16px; font-weight: bold; color: #638dff; margin-top: 10px;">
         Çevresel Kuvvetlerin Yanlış Yönetilmesi Kriteri İçin İkili Karşılaştırma
     </h3>
@@ -1379,6 +1379,578 @@ Yönelik Hibrit Bir Risk Önceliklendirmesi</h1>
                 <div class="kriter-b">Tespit edilebilirlik</div>
             </div>
 
+<h2>FMEA Risk Analizi İçin Değerlendirme Tablosu </h2>
+<!-- FMEA / RİSK PUANLAMA ALANI (7 ANA KRİTER + 21 ALT KRİTER TAM LİSTE) -->
+<div class="risk-matrix-container">
+
+    <!-- ANA KRİTER 1-64 -->
+    <div class="kriter-card">
+        <div class="kriter-baslik">
+            <strong>Ana Kriter 1:</strong> Çevresel kuvvetlerin yanlış yönetilmesi
+        </div>
+        
+        <div class="ana-kriter-puanlama">
+            <div class="puan-label"><strong>Ana Kriter Genel Değerlendirmesi:</strong></div>
+            <div class="drop-grid">
+                <div class="drop-box">
+                    <label for="k1_siddet"><strong>Şiddet (S)</strong><small>(1-10)</small></label>
+                    <select id="k1_siddet" name="k1_siddet" required>
+                        <option value="" disabled selected>Seçiniz</option>
+                        <option value="1">1 - Etkisi yok</option><option value="2">2 - Önemsiz</option><option value="3">3 - Önemsiz boyutta tehlike</option><option value="4">4 - Önemsiz boyutta tehlike</option>
+                        <option value="5">5 - Önemli boyutta tehlike</option><option value="6">6 - Önemli boyutta tehlike</option><option value="7">7 - Büyük boyutta tehlike</option><option value="8">8 - Büyük boyutta tehlike</option><option value="9">9 - Ciddi boyutta tehlike</option>
+                        <option value="10">10 - Ciddi boyutta tehlike</option>
+                    </select>
+                </div>
+                <div class="drop-box">
+                    <label for="k1_olasilik"><strong>Olasılık (O)</strong><small>(1-10)</small></label>
+                    <select id="k1_olasilik" name="k1_olasilik" required>
+                        <option value="" disabled selected>Seçiniz</option>
+                        <option value="1">1 - Yok gibi</option><option value="2">2 - Çok düşük</option><option value="3">3 - Çok düşük</option><option value="4">4 - Orta</option>
+                        <option value="5">5 - Orta</option><option value="6">6 - Orta</option><option value="7">7 - Yüksek</option><option value="8">8 - Yüksek</option><option value="9">9 - Çok yüksek</option>
+                        <option value="10">10 - Çok yüksek</option>
+                    </select>
+                </div>
+                <div class="drop-box">
+                    <label for="k1_tespit"><strong>Tespit (T)</strong><small>(1-10)</small></label>
+                    <select id="k1_tespit" name="k1_tespit" required>
+                        <option value="" disabled selected>Seçiniz</option>
+                        <option value="1">1 - Kesin gibi</option><option value="2">2 - Çok yüksek</option><option value="3">3 - Yüksek</option><option value="4">4 - Orta dereceli yüksek</option>
+                        <option value="5">5 - Orta</option><option value="6">6 - Düşük</option><option value="7">7 - Dikkate değmez</option><option value="8">8 - Hiç dikkate değmez</option><option value="9">9 - Uzak ihtimal</option>
+                        <option value="10">10 - Mümkün değil gibi</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+<!-- ANA KRİTER 1-65 -->
+        <div class="alt-kriterler-wrapper">
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 1.1: Akıntı etkisinin gözardı edilmesi</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k1_ak1_siddet"><strong>Şiddet (S)</strong></label><select id="k1_ak1_siddet" name="k1_ak1_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k1_ak1_olasilik"><strong>Olasılık (O)</strong></label><select id="k1_ak1_olasilik" name="k1_ak1_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k1_ak1_tespit"><strong>Tespit (T)</strong></label><select id="k1_ak1_tespit" name="k1_ak1_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 1-66 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 1.2: Dalga ve deniz durumu baskısı</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k1_ak2_siddet"><strong>Şiddet (S)</strong></label><select id="k1_ak2_siddet" name="k1_ak2_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k1_ak2_olasilik"><strong>Olasılık (O)</strong></label><select id="k1_ak2_olasilik" name="k1_ak2_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k1_ak2_tespit"><strong>Tespit (T)</strong></label><select id="k1_ak2_tespit" name="k1_ak2_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 1-67 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 1.3: Rüzgar kaynaklı sürüklenme</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k1_ak3_siddet"><strong>Şiddet (S)</strong></label><select id="k1_ak3_siddet" name="k1_ak3_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k1_ak3_olasilik"><strong>Olasılık (O)</strong></label><select id="k1_ak3_olasilik" name="k1_ak3_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k1_ak3_tespit"><strong>Tespit (T)</strong></label><select id="k1_ak3_tespit" name="k1_ak3_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANA KRİTER 2-68 -->
+    <div class="kriter-card">
+        <div class="kriter-baslik">
+            <strong>Ana Kriter 2:</strong> Demirleme Alanının Uygun Olmaması
+        </div>
+        
+        <div class="ana-kriter-puanlama">
+            <div class="puan-label"><strong>Ana Kriter Genel Değerlendirmesi:</strong></div>
+            <div class="drop-grid">
+                <div class="drop-box"><label for="k2_siddet"><strong>Şiddet (S)</strong><small>(1-10)</small></label><select id="k2_siddet" name="k2_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Etkisi yok</option><option value="2">2 - Önemsiz</option><option value="3">3 - Önemsiz boyutta tehlike</option><option value="4">4 - Önemsiz boyutta tehlike</option><option value="5">5 - Önemli boyutta tehlike</option><option value="6">6 - Önemli boyutta tehlike</option><option value="7">7 - Büyük boyutta tehlike</option><option value="8">8 - Büyük boyutta tehlike</option><option value="9">9 - Ciddi boyutta tehlike</option><option value="10">10 - Ciddi boyutta tehlike</option></select></div>
+                <div class="drop-box"><label for="k2_olasilik"><strong>Olasılık (O)</strong><small>(1-10)</small></label><select id="k2_olasilik" name="k2_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Yok gibi</option><option value="2">2 - Çok düşük</option><option value="3">3 - Çok düşük</option><option value="4">4 - Orta</option><option value="5">5 - Orta</option><option value="6">6 - Orta</option><option value="7">7 - Yüksek</option><option value="8">8 - Yüksek</option><option value="9">9 - Çok yüksek</option><option value="10">10 - Çok yüksek</	option></select></div>
+                <div class="drop-box"><label for="k2_tespit"><strong>Tespit (T)</strong><small>(1-10)</small></label><select id="k2_tespit" name="k2_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Kesin gibi</	option><option value="2">2 - Çok yüksek</	option><option value="3">3 - Yüksek</	option><option value="4">4 - Orta dereceli yüksek</	option><option value="5">5 - Orta</	option><option value="6">6 - Düşük</option><option value="7">7 - Dikkate değmez</option><option value="8">8 - Hiç dikkate değmez</option><option value="9">9 - Uzak ihtimal</option><option value="10">10 - Mümkün değil gibi</	option></select></div>
+            </div>
+        </div>
+<!-- ANA KRİTER 2-69 -->
+        <div class="alt-kriterler-wrapper">
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 2.1: Tutunma kabiliyeti düşük deniz tabanı</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k2_ak1_siddet"><strong>Şiddet (S)</strong></label><select id="k2_ak1_siddet" name="k2_ak1_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k2_ak1_olasilik"><strong>Olasılık (O)</strong></label><select id="k2_ak1_olasilik" name="k2_ak1_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k2_ak1_tespit"><strong>Tespit (T)</strong></label><select id="k2_ak1_tespit" name="k2_ak1_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 2-70 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 2.2: Aşırı derinlik etkisi</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k2_ak2_siddet"><strong>Şiddet (S)</strong></label><select id="k2_ak2_siddet" name="k2_ak2_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k2_ak2_olasilik"><strong>Olasılık (O)</strong></label><select id="k2_ak2_olasilik" name="k2_ak2_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k2_ak2_tespit"><strong>Tespit (T)</strong></label><select id="k2_ak2_tespit" name="k2_ak2_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 2-71 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 2.3: Açık ve korunmasız demir sahası</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k2_ak3_siddet"><strong>Şiddet (S)</strong></label><select id="k2_ak3_siddet" name="k2_ak3_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k2_ak3_olasilik"><strong>Olasılık (O)</strong></label><select id="k2_ak3_olasilik" name="k2_ak3_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k2_ak3_tespit"><strong>Tespit (T)</strong></label><select id="k2_ak3_tespit" name="k2_ak3_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANA KRİTER 3-72 -->
+    <div class="kriter-card">
+        <div class="kriter-baslik">
+            <strong>Ana Kriter 3:</strong> Demirleme uygulamasındaki operasyonel hatalar
+        </div>
+        
+        <div class="ana-kriter-puanlama">
+            <div class="puan-label"><strong>Ana Kriter Genel Değerlendirmesi:</strong></div>
+            <div class="drop-grid">
+                <div class="drop-box"><label for="k3_siddet"><strong>Şiddet (S)</strong><small>(1-10)</small></label><select id="k3_siddet" name="k3_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Etkisi yok</option><option value="2">2 - Önemsiz</option><option value="3">3 - Önemsiz boyutta tehlike</option><option value="4">4 - Önemsiz boyutta tehlike</option><option value="5">5 - Önemli boyutta tehlike</option><option value="6">6  - Önemli boyutta tehlike</option><option value="7">7 - Büyük boyutta tehlike</option><option value="8">8 - Büyük boyutta tehlike</option><option value="9">9 - Ciddi boyutta tehlike</option><option value="10">10 - Ciddi boyutta tehlike</option></select></div>
+                <div class="drop-box"><label for="k3_olasilik"><strong>Olasılık (O)</strong><small>(1-10)</small></label><select id="k3_olasilik" name="k3_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Yok gibi</option><option value="2">2 - Çok düşük</option><option value="3">3 - Çok düşük</option><option value="4">4 - Orta</option><option value="5">5 - Orta</option><option value="6">6 - Orta</option><option value="7">7 - Yüksek</option><option value="8">8 - Yüksek</option><option value="9">9 - Çok yüksek</option><option value="10">10 - Çok yüksek</option></select></div>
+                <div class="drop-box"><label for="k3_tespit"><strong>Tespit (T)</strong><small>(1-10)</small></label><select id="k3_tespit" name="k3_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Kesin gibi</option><option value="2">2 - Çok yüksek</option><option value="3">3 - Yüksek</option><option value="4">4 - Orta dereceli yüksek</option><option value="5">5 - Orta</option><option value="6">6 - Düşük</option><option value="7">7 - Dikkate değmez</option><option value="8">8 - Hiç dikkate değmez</option><option value="9">9 - Uzak ihtimal</option><option value="10">10 - Mümkün değil gibi</option></select></div>
+            </div>
+        </div>
+<!-- ANA KRİTER 3-73 -->
+        <div class="alt-kriterler-wrapper">
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 3.1: Yetersiz kaloma</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k3_ak1_siddet"><strong>Şiddet (S)</strong></label><select id="k3_ak1_siddet" name="k3_ak1_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k3_ak1_olasilik"><strong>Olasılık (O)</strong></label><select id="k3_ak1_olasilik" name="k3_ak1_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k3_ak1_tespit"><strong>Tespit (T)</strong></label><select id="k3_ak1_tespit" name="k3_ak1_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 3-74 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 3.2: Demirleme düzeninin yanlış seçimi</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k3_ak2_siddet"><strong>Şiddet (S)</strong></label><select id="k3_ak2_siddet" name="k3_ak2_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k3_ak2_olasilik"><strong>Olasılık (O)</strong></label><select id="k3_ak2_olasilik" name="k3_ak2_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k3_ak2_tespit"><strong>Tespit (T)</strong></label><select id="k3_ak2_tespit" name="k3_ak2_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 3-75 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 3.3: Demirin yanlış zamanda kullanılması</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k3_ak3_siddet"><strong>Şiddet (S)</strong></label><select id="k3_ak3_siddet" name="k3_ak3_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k3_ak3_olasilik"><strong>Olasılık (O)</strong></label><select id="k3_ak3_olasilik" name="k3_ak3_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k3_ak3_tespit"><strong>Tespit (T)</strong></label><select id="k3_ak3_tespit" name="k3_ak3_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANA KRİTER 4-76 -->
+    <div class="kriter-card">
+        <div class="kriter-baslik">
+            <strong>Ana Kriter 4:</strong> Demirleme donanımına ilişkin teknik yetersizlikler
+        </div>
+        
+        <div class="ana-kriter-puanlama">
+            <div class="puan-label"><strong>Ana Kriter Genel Değerlendirmesi:</strong></div>
+            <div class="drop-grid">
+                <div class="drop-box"><label for="k4_siddet"><strong>Şiddet (S)</strong><small>(1-10)</small></label><select id="k4_siddet" name="k4_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Etkisi yok</option><option value="2">2 - Önemsiz</option><option value="3">3 - Önemsiz boyutta tehlike</option><option value="4">4 - Önemsiz boyutta tehlike</option><option value="5">5 - Önemli boyutta tehlike</option><option value="6">6 - Önemli boyutta tehlike</option><option value="7">7 - Büyük boyutta tehlike</option><option value="8">8 - Büyük boyutta tehlike</option><option value="9">9 - Ciddi boyutta tehlike</option><option value="10">10 - Ciddi boyutta tehlike</option></select></div>
+                <div class="drop-box"><label for="k4_olasilik"><strong>Olasılık (O)</strong><small>(1-10)</small></label><select id="k4_olasilik" name="k4_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Yok gibi</option><option value="2">2 - Çok düşük</option><option value="3">3 - Çok düşük</option><option value="4">4 - Orta</option><option value="5">5 - Orta</option><option value="6">6 - Orta</option><option value="7">7 - Yüksek</option><option value="8">8 - Yüksek</option><option value="9">9 - Çok yüksek</option><option value="10">10 - Çok yüksek</option></select></div>
+                <div class="drop-box"><label for="k4_tespit"><strong>Tespit (T)</strong><small>(1-10)</small></label><select id="k4_tespit" name="k4_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Kesin gibi</option><option value="2">2 - Çok yüksek</option><option value="3">3 - Yüksek</option><option value="4">4 - Orta dereceli yüksek</option><option value="5">5 - Orta</option><option value="6">6 - Düşük</option><option value="7">7 - Dikkate değmez</option><option value="8">8 - Hiç dikkate değmez</option><option value="9">9 - Uzak ihtimal</option><option value="10">10 - Mümkün değil gibi</option></select></div>
+            </div>
+        </div>
+<!-- ANA KRİTER 4-77 -->
+        <div class="alt-kriterler-wrapper">
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 4.1: Demir veya tırnak geometrisi sorunları</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k4_ak1_siddet"><strong>Şiddet (S)</strong></label><select id="k4_ak1_siddet" name="k4_ak1_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k4_ak1_olasilik"><strong>Olasılık (O)</strong></label><select id="k4_ak1_olasilik" name="k4_ak1_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k4_ak1_tespit"><strong>Tespit (T)</strong></label><select id="k4_ak1_tespit" name="k4_ak1_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 4-78 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 4.2: Donanım–Gemi uyumsuzluğu </div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k4_ak2_siddet"><strong>Şiddet (S)</strong></label><select id="k4_ak2_siddet" name="k4_ak2_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k4_ak2_olasilik"><strong>Olasılık (O)</strong></label><select id="k4_ak2_olasilik" name="k4_ak2_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k4_ak2_tespit"><strong>Tespit (T)</strong></label><select id="k4_ak2_tespit" name="k4_ak2_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 4-79 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 4.3:  Irgatın yetersiz olması (Performansının düşük olması) </div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k4_ak3_siddet"><strong>Şiddet (S)</strong></label><select id="k4_ak3_siddet" name="k4_ak3_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k4_ak3_olasilik"><strong>Olasılık (O)</strong></label><select id="k4_ak3_olasilik" name="k4_ak3_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k4_ak3_tespit"><strong>Tespit (T)</strong></label><select id="k4_ak3_tespit" name="k4_ak3_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANA KRİTER 5-80 -->
+    <div class="kriter-card">
+        <div class="kriter-baslik">
+            <strong>Ana Kriter 5:</strong> Gemi kondisyonundan kaynaklanan dengesizlikler
+        </div>
+        
+        <div class="ana-kriter-puanlama">
+            <div class="puan-label"><strong>Ana Kriter Genel Değerlendirmesi:</strong></div>
+            <div class="drop-grid">
+                <div class="drop-box"><label for="k5_siddet"><strong>Şiddet (S)</strong><small>(1-10)</small></label><select id="k5_siddet" name="k5_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Etkisi yok</option><option value="2">2 - Önemsiz</option><option value="3">3 - Önemsiz boyutta tehlike</option><option value="4">4 - Önemsiz boyutta tehlike</option><option value="5">5 - Önemli boyutta tehlike</option><option value="6">6 - Önemli boyutta tehlike</option><option value="7">7 - Büyük boyutta tehlike</option><option value="8">8 - Büyük boyutta tehlike</option><option value="9">9 - Ciddi boyutta tehlike</option><option value="10">10 - Ciddi boyutta tehlike</option></select></div>
+                <div class="drop-box"><label for="k5_olasilik"><strong>Olasılık (O)</strong><small>(1-10)</small></label><select id="k5_olasilik" name="k5_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Yok gibi</option><option value="2">2 - Çok düşük</option><option value="3">3 - Çok düşük</option><option value="4">4 - Orta</option><option value="5">5 - Orta</option><option value="6">6 - Orta</option><option value="7">7 - Yüksek</option><option value="8">8 - Yüksek</option><option value="9">9 - Çok yüksek</option><option value="10">10 - Çok yüksek</option></select></div>
+                <div class="drop-box"><label for="k5_tespit"><strong>Tespit (T)</strong><small>(1-10)</small></label><select id="k5_tespit" name="k5_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Kesin gibi</option><option value="2">2 - Çok yüksek</option><option value="3">3 - Yüksek</option><option value="4">4 - Orta dereceli yüksek</option><option value="5">5 - Orta</option><option value="6">6 - Düşük</option><option value="7">7 - Dikkate değmez</option><option value="8">8 - Hiç dikkate değmez</option><option value="9">9 - Uzak ihtimal</option><option value="10">10 - Mümkün değil gibi</option></select></div>
+            </div>
+        </div>
+<!-- ANA KRİTER 5-81 -->
+        <div class="alt-kriterler-wrapper">
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 5.1: Uygunsuz trim durumu </div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k5_ak1_siddet"><strong>Şiddet (S)</strong></label><select id="k5_ak1_siddet" name="k5_ak1_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k5_ak1_olasilik"><strong>Olasılık (O)</strong></label><select id="k5_ak1_olasilik" name="k5_ak1_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k5_ak1_tespit"><strong>Tespit (T)</strong></label><select id="k5_ak1_tespit" name="k5_ak1_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 5-82 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 5.2: Makine sistemlerinin hazır tutulmaması </div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k5_ak2_siddet"><strong>Şiddet (S)</strong></label><select id="k5_ak2_siddet" name="k5_ak2_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k5_ak2_olasilik"><strong>Olasılık (O)</strong></label><select id="k5_ak2_olasilik" name="k5_ak2_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k5_ak2_tespit"><strong>Tespit (T)</strong></label><select id="k5_ak2_tespit" name="k5_ak2_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 5-83 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 5.3: Yetersiz balastlama</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k5_ak3_siddet"><strong>Şiddet (S)</strong></label><select id="k5_ak3_siddet" name="k5_ak3_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k5_ak3_olasilik"><strong>Olasılık (O)</strong></label><select id="k5_ak3_olasilik" name="k5_ak3_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k5_ak3_tespit"><strong>Tespit (T)</strong></label><select id="k5_ak3_tespit" name="k5_ak3_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANA KRİTER 6-84 -->
+    <div class="kriter-card">
+        <div class="kriter-baslik">
+            <strong>Ana Kriter 6:</strong> Pozisyon belirleme ve takip eksiklikleri 
+        </div>
+        
+        <div class="ana-kriter-puanlama">
+            <div class="puan-label"><strong>Ana Kriter Genel Değerlendirmesi:</strong></div>
+            <div class="drop-grid">
+                <div class="drop-box"><label for="k6_siddet"><strong>Şiddet (S)</strong><small>(1-10)</small></label><select id="k6_siddet" name="k6_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Etkisi yok</option><option value="2">2 - Önemsiz</option><option value="3">3 - Önemsiz boyutta tehlike</option><option value="4">4 - Önemsiz boyutta tehlike</option><option value="5">5 - Önemli boyutta tehlike</option><option value="6">6 - Önemli boyutta tehlike</option><option value="7">7 - Büyük boyutta tehlike</option><option value="8">8 - Büyük boyutta tehlike</option><option value="9">9 - Ciddi boyutta tehlike</option><option value="10">10 - Ciddi boyutta tehlike</option></select></div>
+                <div class="drop-box"><label for="k6_olasilik"><strong>Olasılık (O)</strong><small>(1-10)</small></label><select id="k6_olasilik" name="k6_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Yok gibi</option><option value="2">2 - Çok düşük</option><option value="3">3 - Çok düşük</option><option value="4">4 - Orta</option><option value="5">5 - Orta</option><option value="6">6 - Orta</option><option value="7">7 - Yüksek</option><option value="8">8 - Yüksek</option><option value="9">9 - Çok yüksek</option><option value="10">10 - Çok yüksek</option></select></div>
+                <div class="drop-box"><label for="k6_tespit"><strong>Tespit (T)</strong><small>(1-10)</small></label><select id="k6_tespit" name="k6_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Kesin gibi</option><option value="2">2 - Çok yüksek</option><option value="3">3 - Yüksek</option><option value="4">4 - Orta dereceli yüksek</option><option value="5">5 - Orta</option><option value="6">6 - Düşük</option><option value="7">7 - Dikkate değmez</option><option value="8">8 - Hiç dikkate değmez</option><option value="9">9 - Uzak ihtimal</option><option value="10">10 - Mümkün değil gibi</option></select></div>
+            </div>
+        </div>
+<!-- ANA KRİTER 6-85 -->
+        <div class="alt-kriterler-wrapper">
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 6.1: Demir pozisyonunun hatalı belirlenmesi </div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k6_ak1_siddet"><strong>Şiddet (S)</strong></label><select id="k6_ak1_siddet" name="k6_ak1_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k6_ak1_olasilik"><strong>Olasılık (O)</strong></label><select id="k6_ak1_olasilik" name="k6_ak1_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k6_ak1_tespit"><strong>Tespit (T)</strong></label><select id="k6_ak1_tespit" name="k6_ak1_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 6-86 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 6.2: Sürekli izleme yapılmaması</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k6_ak2_siddet"><strong>Şiddet (S)</strong></label><select id="k6_ak2_siddet" name="k6_ak2_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k6_ak2_olasilik"><strong>Olasılık (O)</strong></label><select id="k6_ak2_olasilik" name="k6_ak2_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k6_ak2_tespit"><strong>Tespit (T)</strong></label><select id="k6_ak2_tespit" name="k6_ak2_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 6-87 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 6.3: Elektronik destekten yetersiz yararlanma</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k6_ak3_siddet"><strong>Şiddet (S)</strong></label><select id="k6_ak3_siddet" name="k6_ak3_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k6_ak3_olasilik"><strong>Olasılık (O)</strong></label><select id="k6_ak3_olasilik" name="k6_ak3_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k6_ak3_tespit"><strong>Tespit (T)</strong></label><select id="k6_ak3_tespit" name="k6_ak3_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANA KRİTER 7-88 -->
+    <div class="kriter-card">
+        <div class="kriter-baslik">
+            <strong>Ana Kriter 7:</strong> Organizasyonel ve prosedürel yetersizlikler
+        </div>
+        
+        <div class="ana-kriter-puanlama">
+            <div class="puan-label"><strong>Ana Kriter Genel Değerlendirmesi:</strong></div>
+            <div class="drop-grid">
+                <div class="drop-box"><label for="k7_siddet"><strong>Şiddet (S)</strong><small>(1-10)</small></label><select id="k7_siddet" name="k7_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Etkisi yok</option><option value="2">2 - Önemsiz</option><option value="3">3 - Önemsiz boyutta tehlike</option><option value="4">4 - Önemsiz boyutta tehlike</option><option value="5">5 - Önemli boyutta tehlike</option><option value="6">6 - Önemli boyutta tehlike</option><option value="7">7 - Büyük boyutta tehlike</option><option value="8">8 - Büyük boyutta tehlike</option><option value="9">9 - Ciddi boyutta tehlike</option><option value="10">10 - Ciddi boyutta tehlike</option></select></div>
+                <div class="drop-box"><label for="k7_olasilik"><strong>Olasılık (O)</strong><small>(1-10)</small></label><select id="k7_olasilik" name="k7_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Yok gibi</option><option value="2">2 - Çok düşük</option><option value="3">3 - Çok düşük</option><option value="4">4 - Orta</option><option value="5">5 - Orta</option><option value="6">6 - Orta</option><option value="7">7 - Yüksek</option><option value="8">8 - Yüksek</option><option value="9">9 - Çok yüksek</option><option value="10">10 - Çok yüksek</option></select></div>
+                <div class="drop-box"><label for="k7_tespit"><strong>Tespit (T)</strong><small>(1-10)</small></label><select id="k7_tespit" name="k7_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1 - Kesin gibi</option><option value="2">2 - Çok yüksek</option><option value="3">3 - Yüksek</option><option value="4">4 - Orta dereceli yüksek</option><option value="5">5 - Orta</option><option value="6">6 - Düşük</option><option value="7">7 - Dikkate değmez</option><option value="8">8 - Hiç dikkate değmez</option><option value="9">9 - Uzak ihtimal</option><option value="10">10 - Mümkün değil gibi</option></select></div>
+            </div>
+        </div>
+<!-- ANA KRİTER 7-89 -->
+        <div class="alt-kriterler-wrapper">
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 7.1: Demir vardiyasına özgü risk değerlendirmesinin yapılmaması </div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k7_ak1_siddet"><strong>Şiddet (S)</strong></label><select id="k7_ak1_siddet" name="k7_ak1_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k7_ak1_olasilik"><strong>Olasılık (O)</strong></label><select id="k7_ak1_olasilik" name="k7_ak1_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k7_ak1_tespit"><strong>Tespit (T)</strong></label><select id="k7_ak1_tespit" name="k7_ak1_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 7-90 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 7.2: Yetersiz personel tahsisi</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k7_ak2_siddet"><strong>Şiddet (S)</strong></label><select id="k7_ak2_siddet" name="k7_ak2_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k7_ak2_olasilik"><strong>Olasılık (O)</strong></label><select id="k7_ak2_olasilik" name="k7_ak2_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k7_ak2_tespit"><strong>Tespit (T)</strong></label><select id="k7_ak2_tespit" name="k7_ak2_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+            <!-- ANA KRİTER 7-91 -->
+            <div class="sub-kriter-box">
+                <div class="sub-baslik">Alt Kriter 7.3: Talimat ve SMS uygulamalarına uyumsuzluk</div>
+                <div class="drop-grid">
+                    <div class="drop-box"><label for="k7_ak3_siddet"><strong>Şiddet (S)</strong></label><select id="k7_ak3_siddet" name="k7_ak3_siddet" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k7_ak3_olasilik"><strong>Olasılık (O)</strong></label><select id="k7_ak3_olasilik" name="k7_ak3_olasilik" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                    <div class="drop-box"><label for="k7_ak3_tespit"><strong>Tespit (T)</strong></label><select id="k7_ak3_tespit" name="k7_ak3_tespit" required><option value="" disabled selected>Seçiniz</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- CSS STİLLERİ -->
+<style>
+.risk-matrix-container {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.kriter-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-left: 5px solid #1d4ed8;
+    border-radius: 8px;
+    padding: 14px 16px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.kriter-baslik {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 10px !important;
+}
+
+/* ANA KRİTER PUANLAMA ALANI STİLİ */
+.ana-kriter-puanlama {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    padding: 10px 12px !important;
+    margin-bottom: 12px !important;
+}
+
+.puan-label {
+    font-size: 13px;
+    color: #1e40af;
+    margin-bottom: 6px;
+}
+
+/* ALT KRİTERLER WRAPPER STİLİ */
+.alt-kriterler-wrapper {
+    padding-left: 10px;
+    border-left: 2px dashed #cbd5e1;
+}
+
+.sub-kriter-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 12px !important;
+    margin-bottom: 8px !important;
+}
+
+.sub-kriter-box:last-child {
+    margin-bottom: 0 !important;
+}
+
+.sub-baslik {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px !important;
+}
+
+.drop-grid {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.drop-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.drop-box label {
+    font-size: 11px;
+    color: #475569;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drop-box label small {
+    font-size: 10px;
+    color: #94a3b8;
+    font-weight: normal;
+}
+
+.drop-box select {
+    width: 100%;
+    padding: 5px 8px !important;
+    font-size: 12px !important;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #0f172a;
+    cursor: pointer;
+    outline: none;
+}
+
+.drop-box select:focus {
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.15);
+}
+
+@media screen and (max-width: 600px) {
+    .drop-grid {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .alt-kriterler-wrapper {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .sub-kriter-box {
+        padding: 6px 8px !important;
+    }
+}
+</style>
+
+<!-- ÜSTTEN VE ALTTAN BASIK CSS STİLLERİ -->
+<style>
+.risk-matrix-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Kartın iç padding'ini 16px yerine 8px 12px yaptık (Üstten/Alttan basık) */
+.kriter-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #1d4ed8;
+    border-radius: 6px;
+    padding: 8px 12px !important;
+    margin-bottom: 12px !important; /* Kartlar arası boşluğu daralttık */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+/* Başlık alanının alt/üst boşlukları sıfırlandı */
+.kriter-baslik {
+    font-size: 14px;
+    color: #1e293b;
+    margin-bottom: 6px !important;
+    padding-bottom: 4px !important;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Satırlar arası dikey boşluk 15px'den 6px'e düşürüldü */
+.parametre-satir {
+    margin-bottom: 6px !important;
+}
+
+.parametre-satir:last-child {
+    margin-bottom: 0 !important;
+}
+
+.parametre-etiket {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px !important;
+    font-size: 12px;
+    color: #334155;
+}
+
+.parametre-etiket span {
+    font-size: 10px;
+    color: #64748b;
+}
+
+/* Puan kutularının dikey padding'i (iç boşluğu) düşürüldü */
+.puan-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1px;
+    background: #f8fafc;
+    padding: 2px 4px !important; /* Dikey yükseklik min seviyeye indirildi */
+    border-radius: 4px;
+    border: 1px solid #edf2f7;
+}
+
+.puan-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.puan-box input {
+    margin: 1px 0 !important;
+    cursor: pointer;
+}
+
+/* MOBİL ÖZEL BASIKLIK AYARI */
+@media screen and (max-width: 600px) {
+    .kriter-card {
+        padding: 6px 8px !important;
+    }
+
+    .parametre-etiket {
+        font-size: 11px;
+    }
+    
+    .puan-box {
+        font-size: 9px;
+    }
+    
+    .puan-box input {
+        width: 12px;
+        height: 12px;
+    }
+}
+</style>
+            
       <!-- GÖNDER VE TEŞEKKÜR BÖLÜMÜ -->
 <div class="card" style="padding: 20px 25px; margin-bottom: 20px; text-align: center; background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
     
